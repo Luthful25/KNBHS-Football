@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Players List</title>
+
+    <style>
+        /* Page Base */
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #0e0e0e;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container */
+        .container {
+            width: 95%;
+            max-width: 1300px;
+            margin: auto;
+            padding: 30px 0;
+        }
+
+        /* Title */
+        .page-title {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        /* Player Cards Grid */
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        /* Player Card */
+        .player-card {
+            background: #181818;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid #333;
+        }
+
+        .player-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
+        }
+
+        /* Image */
+        .player-img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 3px solid #444;
+        }
+
+        /* Form */
+        .form-box {
+            background: #151515;
+            padding: 20px;
+            border-radius: 14px;
+            margin-bottom: 30px;
+            border: 1px solid #333;
+        }
+
+        .form-box input,
+        .form-box select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #222;
+            color: white;
+        }
+
+        .form-box button {
+            width: 100%;
+            padding: 12px;
+            background: #ff4747;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .form-box button:hover {
+            background: #ff5a5a;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .page-title {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1 class="page-title">Add Players</h1>
+
+        <!-- Add Player Form -->
+        <div class="form-box">
+            <form id="playerForm">
+                <input type="text" id="playerName" placeholder="Player Name" required>
+
+                <input type="text" id="playerCountry" placeholder="Country" required>
+
+                <input type="number" id="playerCredit" placeholder="Credits" required>
+
+                <select id="playerRole" required>
+                    <option value="">Select Role</option>
+                    <option value="Batsman">Batsman</option>
+                    <option value="Bowler">Bowler</option>
+                    <option value="All-Rounder">All-Rounder</option>
+                    <option value="Wicket-Keeper">Wicket-Keeper</option>
+                </select>
+
+                <!-- Device Image Upload -->
+                <input type="file" id="playerImage" accept="image/*" required>
+
+                <button type="submit">Add Player</button>
+            </form>
+        </div>
+
+        <!-- Players Display Section -->
+        <div id="players" class="players-grid"></div>
+
+    </div>
+
+    <script>
+        document.getElementById("playerForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            let name = document.getElementById("playerName").value;
+            let country = document.getElementById("playerCountry").value;
+            let credit = document.getElementById("playerCredit").value;
+            let role = document.getElementById("playerRole").value;
+
+            let imageInput = document.getElementById("playerImage");
+            let imageFile = imageInput.files[0];
+
+            if (!imageFile) {
+                alert("Please select an image!");
+                return;
+            }
+
+            let imageURL = URL.createObjectURL(imageFile);
+
+            let playerCard = `
+                <div class="player-card">
+                    <img src="${imageURL}" class="player-img" alt="Player Image">
+                    <h3>${name}</h3>
+                    <p>Country: ${country}</p>
+                    <p>Credits: ${credit}</p>
+                    <p>Role: ${role}</p>
+                </div>
+            `;
+
+            document.getElementById("players").innerHTML += playerCard;
+
+            // Reset form
+            document.getElementById("playerForm").reset();
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Profile</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .team-container {
+      width: 100%;
+      max-width: 500px;
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    .team-container img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: 28px;
+      letter-spacing: 1px;
+    }
+
+    p {
+      font-size: 16px;
+      opacity: 0.8;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #ffcc00;
+      color: #000;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    form {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background: #ffcc00;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    ul {
+      margin-top: 15px;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      background: #333;
+      padding: 8px;
+      border-radius: 5px;
+      margin-bottom: 5px;
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="team-container">
+    <img src="picture/vv.jpg" alt="Vintage Victors">
+
+    <h1>Vintage Victors</h1>
+    <p>Strong bond and exceptional spirit make them a tough competitor.</p>
+
+    <!-- Add Player Form -->
+    <form id="playerForm">
+      <input type="text" id="playerName" placeholder="Enter player name" required>
+      <button type="submit">Add Player</button>
+    </form>
+
+    <!-- Player List -->
+    <ul id="playerList">
+      <!-- Players will appear here -->
+    </ul>
+
+    <a href="teams.html" class="back-btn">← Back to Teams</a>
+  </div>
+
+  <script>
+    const form = document.getElementById('playerForm');
+    const playerInput = document.getElementById('playerName');
+    const playerList = document.getElementById('playerList');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const playerName = playerInput.value.trim();
+      if (playerName !== '') {
+        const li = document.createElement('li');
+        li.textContent = playerName;
+        playerList.appendChild(li);
+        playerInput.value = '';
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,294 @@
+:root {
+  --theme: #0b8457;
+  --accent: rgba(11, 132, 87, 0.08);
+  --white: #fff;
+  --muted: #777;
+  --dark: #04121e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Oswald', sans-serif;
+}
+
+/* Header / hero */
+.header {
+  min-height: 60vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(4, 9, 30, 0.65), rgba(4, 9, 30, 0.65)), url(picture/auction.jpg);
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  color: var(--white);
+}
+
+nav {
+  display: flex;
+  padding: 2% 6%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav img {
+  width: 150px;
+}
+
+.nav-links {
+  flex: 1;
+  text-align: right;
+}
+
+.nav-links ul li {
+  list-style: none;
+  display: inline-block;
+  padding: 8px 12px;
+}
+
+.nav-links ul li a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.nav-links ul li::after {
+  content: '';
+  width: 0%;
+  height: 2px;
+  background: var(--theme);
+  display: block;
+  margin: 6px auto 0;
+  transition: 0.35s;
+}
+
+.nav-links ul li:hover::after {
+  width: 100%;
+}
+
+/* Hero text */
+.text-box {
+  width: 90%;
+  color: var(--white);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.text-box h1 {
+  font-size: 48px;
+}
+
+.text-box p {
+  margin-top: 12px;
+  font-size: 16px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Auction Section */
+.auction {
+  width: 80%;
+  margin: 80px auto;
+  text-align: center;
+  padding: 60px 40px;
+
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(18px) saturate(170%);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.25),
+    inset 0 0 20px rgba(255, 255, 255, 0.25);
+
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.auction h1 {
+  color: #04121e;
+  font-size: 34px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.auction p {
+  color: #102b40;
+  opacity: 0.85;
+  font-size: 15px;
+}
+
+
+/* Card Row */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 26px;
+  margin-top: 30px;
+}
+
+
+
+
+/* PREMIUM Auction Card */
+.auction-card {
+  flex-basis: calc(33.333% - 20px);
+  background: rgba(255, 255, 255, 0.55);
+
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.22),
+    inset 0 0 20px rgba(255, 255, 255, 0.35);
+
+  transition: 0.35s ease;
+  cursor: pointer;
+
+  /* CENTER THE CARD */
+  margin-left: auto;
+  margin-right: auto;
+
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* Gradient Border Glow */
+.auction-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 2px;
+  background: linear-gradient(135deg,
+      rgba(0, 210, 140, 1),
+      rgba(0, 180, 255, 1),
+      rgba(250, 130, 255, 1));
+-webkit-mask: linear-gradient(#fff 0 0)content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 1;
+  transition: 0.35s ease;
+}
+
+/* Card Hover Effect */
+.auction-card:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.25),
+    inset 0 0 25px rgba(255, 255, 255, 0.28);
+}
+
+
+
+
+/* Card Image */
+.auction-card img {
+  width: 100%;
+  border-radius: 16px;
+  height: 190px;
+  object-fit: cover;
+  transition: 0.4s ease;
+}
+
+.auction-card:hover img {
+  transform: scale(1.07);
+}
+
+
+
+
+/* Card Title */
+.auction-card h3 {
+  margin-top: 16px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #102b40;
+}
+
+
+
+
+/* Card Text */
+.auction-card p {
+  color: #2b3c47;
+  opacity: 0.8;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.hero-btn {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--dark);
+  border: 2px solid var(--theme);
+  padding: 12px 34px;
+  font-size: 14px;
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.hero-btn:hover {
+  border-color: var(--theme);
+  background: var(--theme);
+  transition: 0.35s;
+}
+
+
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Footer */
+.footer {
+  width: 100%;
+  text-align: center;
+  padding: 35px 0;
+  background: #5e3636;
+  /* dark background */
+  color: #f1f1f1;
+  /* light text */
+}
+
+.footer h4 {
+  margin-bottom: 18px;
+  font-size: 18px;
+  color: #fff;
+  /* white heading */
+}
+
+.icons i {
+  flex: 1;
+  color: #00e0a8;
+  /* neon aqua (theme vibe) */
+  margin: 0 12px;
+  cursor: pointer;
+  font-size: 22px;
+  transition: 0.3s ease;
+}
+
+/* hover glow effect */
+.icons i:hover {
+  color: #44ffd1;
+  transform: scale(1.15);
+  text-shadow: 0 0 10px rgba(68, 255, 209, 0.6);
+}
